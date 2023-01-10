@@ -1,6 +1,7 @@
 package gmbh.conteco.springschulungspringboot.department.controller;
 
 import gmbh.conteco.springschulungspringboot.department.entity.Department;
+import gmbh.conteco.springschulungspringboot.department.exception.DepartmentNotFoundExeption;
 import gmbh.conteco.springschulungspringboot.department.service.DepartmentService;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
@@ -27,7 +28,7 @@ public class DepartmentController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Department> getDepartment(@PathVariable("id") Long id) {
+    public Optional<Department> getDepartment(@PathVariable("id") Long id) throws DepartmentNotFoundExeption {
         return departmentService.getDepartmentById(id);
     }
 

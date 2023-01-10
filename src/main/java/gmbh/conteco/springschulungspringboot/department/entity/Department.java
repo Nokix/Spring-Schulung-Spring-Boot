@@ -1,4 +1,4 @@
-package gmbh.conteco.springschulungspringboot.department;
+package gmbh.conteco.springschulungspringboot.department.entity;
 
 import jakarta.persistence.*;
 

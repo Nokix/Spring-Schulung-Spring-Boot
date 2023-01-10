@@ -1,7 +1,7 @@
 package gmbh.conteco.springschulungspringboot;
 
-import gmbh.conteco.springschulungspringboot.department.Department;
-import gmbh.conteco.springschulungspringboot.department.DepartmentRepository;
+import gmbh.conteco.springschulungspringboot.department.entity.Department;
+import gmbh.conteco.springschulungspringboot.department.repository.DepartmentRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,23 +10,27 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class SpringSchulungSpringBootApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringSchulungSpringBootApplication.class, args);
-		System.out.println("Hallo DB!");
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SpringSchulungSpringBootApplication.class, args);
+    }
 
-	@Bean
-	CommandLineRunner myApp(DepartmentRepository departmentRepository) {
-		return args -> {
-			Department department = new Department();
-			department.setName("IT-Entwicklung");
+    @Bean
+    CommandLineRunner myApp(DepartmentRepository departmentRepository) {
+        return args -> {
+            Department department0 = new Department();
+            department0.setName("IT-Entwicklung");
+            departmentRepository.save(department0);
+            Department department1 = new Department();
+            department1.setName("Vertrieb");
+            departmentRepository.save(department1);
+            Department department2 = new Department();
+            department2.setName("Personal");
+            departmentRepository.save(department2);
 
-			departmentRepository.save(department);
+            departmentRepository.findAll()
+                    .forEach(d -> System.out.println(d.getName()));
 
-			departmentRepository.findAll()
-					.forEach(department1 -> System.out.println(department1.getName()));
-
-		};
-	}
+        };
+    }
 
 }

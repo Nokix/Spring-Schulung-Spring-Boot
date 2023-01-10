@@ -21,10 +21,10 @@ public class SpringSchulungSpringBootApplication {
             department0.setName("IT-Entwicklung");
             departmentRepository.save(department0);
             Department department1 = new Department();
-            department1.setName("Vertrieb");
+            department1.setName("Vertrieb").setDepartment_id(4L);
             departmentRepository.save(department1);
-            Department department2 = new Department();
-            department2.setName("Personal");
+            Department department2 = Department.builder().name("Personal").build();
+
             departmentRepository.save(department2);
 
             departmentRepository.findAll()

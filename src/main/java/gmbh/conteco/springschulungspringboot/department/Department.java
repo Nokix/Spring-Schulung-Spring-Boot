@@ -3,6 +3,7 @@ package gmbh.conteco.springschulungspringboot.department;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "dep")
 public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -15,6 +16,8 @@ public class Department {
     public String getName() {
         return name;
     }
+
+
 
     public void setName(String name) {
         this.name = name;

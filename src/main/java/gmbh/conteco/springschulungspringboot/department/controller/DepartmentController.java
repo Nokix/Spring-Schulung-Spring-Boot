@@ -40,4 +40,9 @@ public class DepartmentController {
     public List<Department> deleteDepartmentsStartingWith(@PathVariable("name") String prefix) {
         return departmentService.deleteDepartemtsStartingWith(prefix);
     }
+
+    @GetMapping("/name/presuf/{presuf}")
+    public Optional<Department> getDepartmentByPrefixOrSuffix(@PathVariable("presuf") String presuf) {
+        return departmentService.getDepartmentByPrefixOrSuffix(presuf);
+    }
 }

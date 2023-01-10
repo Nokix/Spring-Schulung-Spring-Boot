@@ -35,4 +35,8 @@ public class DepartmentService {
     public List<Department> deleteDepartemtsStartingWith(String prefix) {
         return departmentRepository.deleteByNameStartsWithIgnoreCase(prefix);
     }
+
+    public Optional<Department> getDepartmentByPrefixOrSuffix(String presuf) {
+        return departmentRepository.findByPreOrSuffix(presuf);
+    }
 }

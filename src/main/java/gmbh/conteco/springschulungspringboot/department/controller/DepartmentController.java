@@ -30,4 +30,14 @@ public class DepartmentController {
     public Department saveDepartment(@Valid @RequestBody Department department) {
         return departmentService.saveDepartment(department);
     }
+
+    @GetMapping("/name/{name}")
+    public Optional<Department> getDepartmentByName(@PathVariable("name") String name) {
+        return departmentService.getDepartmentByName(name);
+    }
+
+    @DeleteMapping("/name/{name}")
+    public List<Department> deleteDepartmentsStartingWith(@PathVariable("name") String prefix) {
+        return departmentService.deleteDepartemtsStartingWith(prefix);
+    }
 }

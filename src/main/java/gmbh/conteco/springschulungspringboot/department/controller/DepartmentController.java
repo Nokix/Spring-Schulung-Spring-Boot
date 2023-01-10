@@ -3,6 +3,8 @@ package gmbh.conteco.springschulungspringboot.department.controller;
 import gmbh.conteco.springschulungspringboot.department.entity.Department;
 import gmbh.conteco.springschulungspringboot.department.service.DepartmentService;
 import jakarta.validation.Valid;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,11 +15,14 @@ import java.util.Optional;
 @RequestMapping("/department")
 public class DepartmentController {
 
+    private final Logger LOGGER = LoggerFactory.getLogger(DepartmentController.class);
+
     @Autowired
     private DepartmentService departmentService;
 
     @GetMapping("/")
     public List<Department> getAllDepartments() {
+        LOGGER.info("GET: getAllDepartments");
         return departmentService.fetchAllDepartments();
     }
 

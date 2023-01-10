@@ -1,5 +1,8 @@
 package gmbh.conteco.springschulungspringboot;
 
+import gmbh.conteco.springschulungspringboot.department.Department;
+import gmbh.conteco.springschulungspringboot.department.DepartmentRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,15 +11,21 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class SpringSchulungSpringBootApplication {
 
+//	@Autowired
+//	private DepartmentRepository departmentRepository;
+
 	public static void main(String[] args) {
 		SpringApplication.run(SpringSchulungSpringBootApplication.class, args);
 		System.out.println("Hallo DB!");
 	}
 
 	@Bean
-	CommandLineRunner myApp() {
+	CommandLineRunner myApp(DepartmentRepository departmentRepository) {
 		return args -> {
-			System.out.println("Hallo Welt!");
+			Department department = new Department();
+			department.setName("IT-Entwicklung");
+
+			departmentRepository.save(department);
 		};
 	}
 

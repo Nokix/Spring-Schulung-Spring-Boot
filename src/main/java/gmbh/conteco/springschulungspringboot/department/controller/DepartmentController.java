@@ -38,7 +38,7 @@ public class DepartmentController {
     }
 
     @GetMapping("/name/{name}")
-    public Optional<Department> getDepartmentByName(@PathVariable("name") String name) {
+    public Optional<Department> getDepartmentByName(@PathVariable("name") String name) throws DepartmentNotFoundExeption {
         return departmentService.getDepartmentByName(name);
     }
 

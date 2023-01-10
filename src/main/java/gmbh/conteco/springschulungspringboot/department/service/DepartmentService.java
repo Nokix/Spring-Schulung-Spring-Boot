@@ -32,8 +32,10 @@ public class DepartmentService {
         return departmentRepository.save(department);
     }
 
-    public Optional<Department> getDepartmentByName(String name) {
-        return departmentRepository.findByName(name);
+    public Optional<Department> getDepartmentByName(String name) throws DepartmentNotFoundExeption {
+        Optional<Department> departmentOptional = departmentRepository.findByName(name);
+        if (departmentOptional.isEmpty()) throw new DepartmentNotFoundExeption("No department with name: " + name);
+        return departmentOptional;
     }
 
     @Transactional

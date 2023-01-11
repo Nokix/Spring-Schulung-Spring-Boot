@@ -35,7 +35,7 @@ class DepartmentControllerTest {
 
     @Test
     void saveDepartment() throws Exception {
-        MockHttpServletRequestBuilder post = MockMvcRequestBuilders.post("/department")
+        MockHttpServletRequestBuilder post = MockMvcRequestBuilders.post("/department/")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{\"name\": \"IT\"}");
         mockMvc.perform(post).andExpect(MockMvcResultMatchers.status().isOk());
